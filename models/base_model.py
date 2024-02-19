@@ -3,7 +3,7 @@
 
 import uuid
 import datetime
-
+import models
 
 class BaseModel:
     """base class"""
@@ -18,11 +18,10 @@ class BaseModel:
                     else:
                         setattr(self, k, v)
         else:
-            self.id = uuid.uuid4()
-            self.id = str(self.id)
+            self.id = str(uuid.uuid4())
             self.created_at = datetime.datetime.now()
             self.updated_at = self.created_at
-        
+            models.storage.new(self)
 
     def __str__(self):
         """repesentation of the object"""
@@ -31,6 +30,7 @@ class BaseModel:
     def save(self):
         """save"""
         self.updated_at = datetime.datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """returs dict"""
