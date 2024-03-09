@@ -3,11 +3,13 @@
 import cmd
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """console class"""
     prompt = '(hbnb)'
     classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]    
+
     def do_EOF(self, arg):
         """exit console"""
         return True
