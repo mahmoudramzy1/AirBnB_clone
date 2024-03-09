@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
              print("** class name missing **")
         if (arg):
             args = arg.split()
-            if args[0] not in classes:
+            if args[0] not in self.classes:
                 print("** class doesn't exist **")
             else:
                 new = eval(args[0])()
@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(args) <= 1:
             print("** instance id missing **")
@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(args) <= 1:
             print("** instance id missing **")
@@ -71,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
             print(lo)
         else:
             args = arg.split()
-            if args[0] not in classes:
+            if args[0] not in self.classes:
                 print("** class doesn't exist **")
             else:
                 print([str(o) for key, o in storage.all().items() if key.split(".")[0] == args[0]])
@@ -82,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         args = arg.split()
-        if args[0] not in classes:
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
             return
         if len(args) <= 1:
