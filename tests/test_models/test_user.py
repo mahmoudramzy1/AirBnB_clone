@@ -10,7 +10,7 @@ class TestUser(unittest.TestCase):
     
     def SetUp(self):
         """create my user"""
-        cls.my = User()
+        cls.u = User()
 
 
     def test_attributes(self):
@@ -23,4 +23,20 @@ class TestUser(unittest.TestCase):
         self.assertEqual(user5.password, 123)
         self.assertEqual(user5.first_name, "Jane")
         self.assertEqual(user5.last_name, "Foster")
+    
+     def test_email(self):
+        """test email"""
+        self.assertEqual(str, type(self.u.email))
+
+    def test_password(self):
+        """test password"""
+        self.assertEqual(str, type(self.u.password))
+
+    def test_first_name(self):
+        """test first name"""
+        self.assertEqual(str, type(self.u.first_name))
+
+    def test_last_name(self):
+        """test second name"""
+        self.assertEqual(str, type(self.u.last_name))
 
