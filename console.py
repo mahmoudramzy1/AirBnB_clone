@@ -14,23 +14,26 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """console class"""
     prompt = '(hbnb)'
-    classes = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]    
+    classes = [
+            "BaseModel", "User", "State", "City",
+            "Amenity", "Place", "Review"
+            ]
 
     def do_EOF(self, arg):
         """exit console"""
         return True
-    
+
     def do_quit(self, arg):
         """exit the console"""
         return True
-    
+
     def emptyline(self):
         pass
 
     def do_create(self, arg):
         """create new object"""
         if len(arg) == 0:
-             print("** class name missing **")
+            print("** class name missing **")
         if (arg):
             args = arg.split()
             if args[0] not in self.classes:
@@ -82,8 +85,12 @@ class HBNBCommand(cmd.Cmd):
             if args[0] not in self.classes:
                 print("** class doesn't exist **")
             else:
-                print([str(o) for key, o in storage.all().items() if key.split(".")[0] == args[0]])
-    
+                print([
+                    str(o)
+                    for key, o in storage.all().items()
+                    if key.split(".")[0] == args[0]
+                    ])
+
     def do_update(self, arg):
         """update an instance"""
         if len(arg) == 0:
@@ -109,6 +116,7 @@ class HBNBCommand(cmd.Cmd):
         setattr(content, args[2], eval(args[3]))
 
         storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
