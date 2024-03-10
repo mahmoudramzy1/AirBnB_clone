@@ -5,16 +5,22 @@ import uuid
 import datetime
 import models
 
+
 class BaseModel:
     """base class"""
-    
+
     def __init__(self, *args, **kwargs):
         """constructor"""
         if kwargs:
             for k, v in kwargs.items():
                 if k != "__class__":
                     if k == "created_at" or k == "updated_at":
-                        setattr(self, k, datetime.datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f"))
+                        setattr(self,
+                                k,
+                                datetime.datetime.strptime(
+                                    v,
+                                    "%Y-%m-%dT%H:%M:%S.%f"
+                                    ))
                     else:
                         setattr(self, k, v)
         else:
@@ -25,8 +31,12 @@ class BaseModel:
 
     def __str__(self):
         """repesentation of the object"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
-    
+        return "[{}] ({}) {}".format(
+                self.__class__.__name__,
+                self.id,
+                self.__dict__
+                )
+
     def save(self):
         """save"""
         self.updated_at = datetime.datetime.now()
